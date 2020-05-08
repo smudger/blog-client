@@ -10,6 +10,16 @@ module.exports = {
   plugins: [
     {
       use: 'gridsome-plugin-tailwindcss',
+    },
+    {
+      use: '@gridsome/source-filesystem',
+      options: {
+        typeName: 'BlogPost',
+        path: './content/blog/**/*.md',
+      }
     }
-  ]
+  ],
+  templates: {
+    BlogPost: '/blog/:title'
+  }
 }
