@@ -5,7 +5,7 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: 'Smudgeblog',
+  siteName: 'smudgeblog',
   siteUrl: 'https://blog.smudgeserve.net',
   plugins: [
     {
@@ -14,12 +14,12 @@ module.exports = {
     {
       use: '@gridsome/source-filesystem',
       options: {
-        typeName: 'BlogPost',
-        path: './content/blog/**/*.md',
+        typeName: 'Post',
+        path: './content/posts/**/*.md',
       }
     }
   ],
   templates: {
-    BlogPost: '/blog/:title'
+    Post: '/posts/:title'
   }
 }
