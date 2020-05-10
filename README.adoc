@@ -1,0 +1,26 @@
+= Smudgeblog (Client) image:https://api.netlify.com/api/v1/badges/acb676a2-562b-473d-81c9-65238b65e429/deploy-status["Netlify Status", link="https://app.netlify.com/sites/smudgeblog/deploys"]
+
+The client for smudgeblog.
+
+== Getting Started
+
+==== Project Dependencies
+
+You will need to install the project dependencies by running the following command.
+
+[source,sh]
+yarn
+
+==== Local Development
+
+A local development server can be run by running the following command.
+
+[source,sh]
+yarn dev
+
+==== Production Build
+
+The app can be built for production by running the following command.
+
+[source,sh]
+yarn build
