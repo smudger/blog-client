@@ -33,6 +33,7 @@ fields:
 - type: text
   name: image_caption
   label: image_caption
-- type: text
-  name: tags
+- name: tags
+  type: tag_list
+  default: []
   label: tags
