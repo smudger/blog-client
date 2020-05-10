@@ -6,9 +6,12 @@ fields:
 - type: text
   name: title
   label: title
-- type: text
-  name: title_color
+- name: title_color
+  type: color
   label: title_color
+  config:
+    required: false
+    color_format: Hex
 - type: text
   name: title_meta
   label: title_meta
