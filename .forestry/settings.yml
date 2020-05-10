@@ -9,8 +9,8 @@ sections:
   label: Posts
   create: all
   match: "**/*.md"
-upload_dir: src/assets
-public_path: "./data"
+upload_dir: content/img
+public_path: "../img"
 front_matter_path: ''
 use_front_matter_path: 
 file_template: ":filename:"
