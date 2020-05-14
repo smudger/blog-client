@@ -9,8 +9,7 @@
         </g-link>
       </strong>
       <nav class="nav">
-        <g-link class="mr-2 hover:underline" to="/">Home</g-link>
-        <g-link class="mr-2 hover:underline" to="/about/">About</g-link>
+        <g-link class="mr-2 hover:underline" to="/posts/test-post">test post</g-link>
       </nav>
     </header>
     <main class="mt-8">

@@ -1,7 +1,7 @@
 ---
 tags:
 - flowers
-title: New Post
+title: test post
 title_color: "#C61515"
 title_meta: Some meta info
 author: Louis Smith
@@ -12,6 +12,6 @@ image: "../img/foo.jpg"
 image_caption: some spring flowers
 
 ---
-Here's a picture of some nice flowers
+here's a picture of some nice flowers
 
 ![Alternative text](../img/foo.jpg)![](../img/foo.jpg)
