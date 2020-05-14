@@ -13,5 +13,8 @@
   },
   "devDependencies": {
     "gridsome-plugin-tailwindcss": "^2.2.48"
+  },
+  "resolutions": {
+    "minimist": "^0.2.1"
   }
 }
