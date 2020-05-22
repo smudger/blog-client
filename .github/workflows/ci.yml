@@ -7,17 +7,20 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  ci:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+
+    - name: Build
+      run: yarn
 
     - name: Code Style
       run: yarn lint
 
     - name: Tests
       run: yarn test
-        
+
     - name: Get yarn cache directory path
       id: yarn-cache-dir-path
       run: echo "::set-output name=dir::$(yarn cache dir)"
