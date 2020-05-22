@@ -6,15 +6,6 @@ fields:
 - type: text
   name: title
   label: title
-- name: title_color
-  type: color
-  label: title_color
-  config:
-    required: false
-    color_format: Hex
-- type: text
-  name: title_meta
-  label: title_meta
 - type: text
   name: author
   label: author
@@ -27,12 +18,6 @@ fields:
 - type: textarea
   name: excerpt
   label: excerpt
-- type: file
-  name: image
-  label: image
-- type: text
-  name: image_caption
-  label: image_caption
 - name: tags
   type: tag_list
   default: []
