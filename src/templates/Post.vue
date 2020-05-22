@@ -8,11 +8,11 @@
 </template>
 
 <page-query>
-query ($id: ID!) {
-  post(id: $id) {
-    author
-    title
-    content
+  query($id: ID!) {
+    post(id: $id) {
+      author
+      title
+      content
+    }
   }
-}
 </page-query>
