@@ -4,6 +4,8 @@
   "scripts": {
     "build": "gridsome build",
     "dev": "gridsome develop",
+    "test": "mochapack --webpack-config webpack.config.js --require test/setup.js test/**/*.spec.js",
+    "lint": "eslint --ignore-path .gitignore src test",
     "explore": "gridsome explore"
   },
   "dependencies": {
@@ -12,7 +14,27 @@
     "gridsome": "^0.7.0"
   },
   "devDependencies": {
-    "gridsome-plugin-tailwindcss": "^2.2.48"
+    "@vue/test-utils": "^1.0.3",
+    "eslint": "^7.0.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-gridsome": "^1.4.12",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jest": "^23.13.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-vue": "^6.2.2",
+    "expect": "^26.0.1",
+    "gridsome-plugin-tailwindcss": "^2.2.48",
+    "jsdom": "^16.2.2",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^7.1.2",
+    "mochapack": "^2.0.0",
+    "vue-eslint-parser": "^7.1.0",
+    "vue-loader": "^15.9.2",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^4.43.0",
+    "webpack-node-externals": "^1.7.2"
   },
   "resolutions": {
     "minimist": "^0.2.1"
