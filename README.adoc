@@ -1,4 +1,4 @@
-= Smudgeblog (Client) image:https://api.netlify.com/api/v1/badges/acb676a2-562b-473d-81c9-65238b65e429/deploy-status["Netlify Status", link="https://app.netlify.com/sites/smudgeblog/deploys"]
+= Smudgeblog (Client) image:https://github.com/smudger/blog-client/workflows/CI/badge.svg?branch=master["Build"] image:https://api.netlify.com/api/v1/badges/acb676a2-562b-473d-81c9-65238b65e429/deploy-status["Netlify Status", link="https://app.netlify.com/sites/smudgeblog/deploys"]
 
 The client for smudgeblog.
 
