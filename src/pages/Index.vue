@@ -1,6 +1,6 @@
 <template>
   <div class="flex">
-    <post-list/>
+    <sidebar/>
     <div>
       <p>
         a small collection of idle musings.
@@ -10,11 +10,11 @@
 </template>
 
 <script>
-import PostList from '~/components/PostList.vue'
+import Sidebar from '~/components/Sidebar.vue'
 
 export default {
   components: {
-    PostList
+    Sidebar
   },
 
   metaInfo: {
