@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="max-w-lg mx-auto text-xl">
     <sidebar/>
   </div>
 </template>

@@ -3,7 +3,7 @@
     <header>
       <strong>
         <g-link
-          class="underline"
+          class="text-6xl"
           to="/">
             {{ $static.metadata.siteName }}
         </g-link>
