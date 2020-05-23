@@ -24,9 +24,9 @@ describe('The sidebar', () => {
   })
 
   it('can display a list of post titles', () => {
-    expect(wrapper.html()).toEqual(expect.stringContaining('First Post'))
-    expect(wrapper.html()).toEqual(expect.stringContaining('Second Post'))
-    expect(wrapper.html()).toEqual(expect.stringContaining('Third Post'))
+    expect(wrapper.html()).toEqual(expect.stringContaining('first post'))
+    expect(wrapper.html()).toEqual(expect.stringContaining('second post'))
+    expect(wrapper.html()).toEqual(expect.stringContaining('third post'))
   })
 
   it('links to the view post page', () => {
