@@ -9,7 +9,7 @@ tags:
 title: New blog musings
 author: Smudger
 category: Blog
-created_at: 2020-05-01T16:00:00+01:00
+created_at: 2020-05-01T15:00:00.000+00:00
 excerpt: For my inaugural post, it feels appropriate to talk about my experiences
   setting the blog up and I have to say the whole process couldn't have been easier.
 
@@ -26,4 +26,4 @@ Gridsome fulfilled my needs perfectly, offering the same benefits as Gatsby but 
 
 In terms of hosting, I'm using [Netlify](https://www.netlify.com/ "Netlify") and have little to say because it's been so seamless. It took me no time at all to set up continuous deployment and everything just seemed to work first time so I'm one happy camper on that front.
 
-Overall, I have to say that as this back-end developer's first foray into the world of front-end development, setting up this blog has been a hugely rewarding experience and I'm excited to see where I can go with it next. Watch this space for more vaguely programming-related ramblings and more about more journey into the wild world of the front-end! :)
+Overall, I have to say that as this back-end developer's first foray into the world of front-end development, setting up this blog has been a hugely rewarding experience and I'm excited to see where I can go with it next. Watch this space for more vaguely programming-related ramblings and more about my journey into the wild world of the front-end! :)
