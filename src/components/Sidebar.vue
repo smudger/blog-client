@@ -1,8 +1,14 @@
 <template>
 <div>
-    <div v-for="edge in $static.allPost.edges" :key="edge.node.title">
-      <g-link :to="edge.node.title | path">
-        {{ edge.node.title }}
+    <div
+      v-for="edge in $static.allPost.edges"
+      :key="edge.node.title"
+    >
+      <g-link
+        class="hover:underline"
+        :to="edge.node.title | path"
+      >
+        {{ edge.node.title.toLowerCase() }}
       </g-link>
     </div>
 </div>

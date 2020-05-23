@@ -1,11 +1,6 @@
 <template>
-  <div class="flex">
+  <div>
     <sidebar/>
-    <div>
-      <p>
-        a small collection of idle musings.
-      </p>
-    </div>
   </div>
 </template>
 
