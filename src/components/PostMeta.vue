@@ -8,9 +8,20 @@
             class="border-b-2 text-3xl mr-3 mb-3"
             v-text="title.toLowerCase()"
         />
-        <p id="time_to_read">{{ timeToRead }} mins to read</p>
-        <p id="author" v-text="author.toLowerCase()" />
-        <p id="created_at" v-text="friendlyCreatedAt" />
+        <div class="flex flex-col sm:flex-row xl:flex-col justify-between items-baseline">
+            <div class="flex mb-2 sm:mb-0 xl:mb-2">
+                <clock-icon class="w-8 h-auto mr-2" />
+                <p id="time_to_read">{{ timeToRead }} mins</p>
+            </div>
+            <div class="flex mb-2 sm:mb-0 xl:mb-2">
+                <user-icon class="w-8 h-auto mr-2" />
+                <p id="author" v-text="author.toLowerCase()"/>
+            </div>
+            <div class="flex">
+                <calendar-icon class="w-8 h-auto mr-2" />
+                <p id="created_at" v-text="friendlyCreatedAt" />
+            </div>
+        </div>
         <div class="flex flex-wrap">
             <div
                 class="uppercase tracking-wider font-bold text-sm mr-2 mt-4 bg-gray-100 text-gray-900 border px-2 py-1 rounded-lg"
@@ -24,8 +35,17 @@
 
 <script>
 import moment from 'moment'
+import UserIcon from '~/components/icons/UserIcon.vue'
+import ClockIcon from '~/components/icons/ClockIcon.vue'
+import CalendarIcon from '~/components/icons/CalendarIcon.vue'
 
 export default {
+  components: {
+    UserIcon,
+    ClockIcon,
+    CalendarIcon
+  },
+
   props: {
     title: String,
     timeToRead: Number,
