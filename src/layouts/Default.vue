@@ -1,6 +1,6 @@
 <template>
-  <div class="max-w-2xl mx-auto p-4">
-    <header>
+  <div class="p-4">
+    <header class="max-w-2xl mx-auto">
       <strong>
         <g-link
           class="text-6xl"
@@ -9,7 +9,7 @@
         </g-link>
       </strong>
     </header>
-    <main>
+    <main class="relative">
       <slot/>
     </main>
   </div>
