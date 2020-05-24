@@ -13,6 +13,7 @@ if (process.env.NODE_ENV === 'production') postcssPlugins.push(purgecss(require(
 
 module.exports = {
   siteName: 'smudgeblog',
+  siteDescription: 'Yet another programming blog.',
   siteUrl: 'https://blog.smudgeserve.net',
   plugins: [
     {
