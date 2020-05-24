@@ -9,7 +9,7 @@ tags:
 title: New blog musings
 author: Smudger
 category: Blog
-created_at: 2020-05-01T15:00:00.000+00:00
+created_at: 2020-05-23T15:00:00.000+00:00
 excerpt: For my inaugural post, it feels appropriate to talk about my experiences
   setting the blog up and I have to say the whole process couldn't have been easier.
 
