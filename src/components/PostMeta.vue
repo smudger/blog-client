@@ -8,16 +8,16 @@
             class="border-b-2 text-3xl mr-3 mb-3"
             v-text="title.toLowerCase()"
         />
-        <div class="flex flex-col sm:flex-row xl:flex-col justify-between items-baseline">
-            <div class="flex mb-2 sm:mb-0 xl:mb-2">
+        <div class="flex flex-col sm:flex-row xl:flex-col justify-between">
+            <div class="flex mb-2 sm:mb-0 xl:mb-2 items-center">
                 <clock-icon class="w-8 h-auto mr-2" />
                 <p id="time_to_read">{{ timeToRead }} mins</p>
             </div>
-            <div class="flex mb-2 sm:mb-0 xl:mb-2">
+            <div class="flex mb-2 sm:mb-0 xl:mb-2 items-center">
                 <user-icon class="w-8 h-auto mr-2" />
                 <p id="author" v-text="author.toLowerCase()"/>
             </div>
-            <div class="flex">
+            <div class="flex items-center">
                 <calendar-icon class="w-8 h-auto mr-2" />
                 <p id="created_at" v-text="friendlyCreatedAt" />
             </div>
