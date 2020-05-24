@@ -26,9 +26,9 @@ describe('The post meta', () => {
   afterEach(() => clock.restore())
 
   it('can display meta information about the post', () => {
-    expect(wrapper.html()).toEqual(expect.stringContaining('my first post'))
+    expect(wrapper.html()).toEqual(expect.stringContaining('My First Post'))
     expect(wrapper.html()).toEqual(expect.stringContaining('3 mins'))
-    expect(wrapper.html()).toEqual(expect.stringContaining('blue lou'))
+    expect(wrapper.html()).toEqual(expect.stringContaining('Blue Lou'))
     expect(wrapper.html()).toEqual(expect.stringContaining('a few seconds ago'))
     expect(wrapper.html()).toEqual(expect.stringContaining('guitar'))
     expect(wrapper.html()).toEqual(expect.stringContaining('soul'))

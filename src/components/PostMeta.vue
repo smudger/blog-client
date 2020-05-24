@@ -5,17 +5,17 @@
     >
         <h1
             id="title"
-            class="border-b-2 text-3xl mr-3 mb-3"
-            v-text="title.toLowerCase()"
+            class="border-b-2 text-3xl mr-3 mb-3 lowercase"
+            v-text="title"
         />
         <div class="flex flex-col sm:flex-row xl:flex-col justify-between">
             <div class="flex mb-2 sm:mb-0 xl:mb-2 items-center">
                 <clock-icon class="w-8 h-auto mr-2" />
                 <p id="time_to_read">{{ timeToRead }} mins</p>
             </div>
-            <div class="flex mb-2 sm:mb-0 xl:mb-2 items-center">
+            <div class="flex mb-2 sm:mb-0 xl:mb-2 items-center lowercase">
                 <user-icon class="w-8 h-auto mr-2" />
-                <p id="author" v-text="author.toLowerCase()"/>
+                <p id="author" v-text="author"/>
             </div>
             <div class="flex items-center">
                 <calendar-icon class="w-8 h-auto mr-2" />

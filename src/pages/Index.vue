@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-lg mx-auto text-xl">
-    <sidebar/>
+    <sidebar class="mt-4" />
   </div>
 </template>
 
