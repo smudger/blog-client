@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import PostMeta from '../../src/components/PostMeta.vue'
+import PostMeta from '~/components/PostMeta.vue'
 import moment from 'moment'
 import sinon from 'sinon'
 
