@@ -2,13 +2,11 @@
   <div class="flex flex-col min-h-screen">
     <header class="border-t-8 border-gray-900">
       <div class="max-w-2xl mx-auto">
-        <strong>
-          <g-link
-            class="text-6xl focus:outline-none focus:underline hover:underline tracking-tight"
-            to="/">
-              {{ $static.metadata.siteName }}
-          </g-link>
-        </strong>
+        <g-link
+          class="text-6xl font-bold focus:outline-none focus:underline hover:underline tracking-tight"
+          to="/">
+          <h1>{{ $static.metadata.siteName }}</h1>
+        </g-link>
       </div>
     </header>
     <main class="flex-grow relative p-4">

@@ -1,6 +1,6 @@
 <template>
     <div class="xl:flex xl:justify-around text-xl">
-      <div class="mx-auto xl:mx-0 max-w-xl">
+      <aside class="mx-auto xl:mx-0 max-w-xl">
         <post-meta
           class="xl:max-w-xs xl:w-full"
           :title="$page.post.title"
@@ -9,13 +9,13 @@
           :created_at="$page.post.created_at"
           :tags="$page.post.tags"
         />
-      </div>
-      <div
+      </aside>
+      <article
         id="content"
         class="leading-relaxed mx-auto xl:mx-0 max-w-xl"
         v-html="$page.post.content"
       />
-    <div class="max-w-xl xl:max-w-xs xl:w-full">
+    <div aria-hidden="true" class="max-w-xl xl:max-w-xs xl:w-full">
     </div>
   </div>
 </template>
@@ -52,6 +52,9 @@ export default {
 <style>
   #content a {
     @apply underline;
+  }
+  #content a:focus{
+    @apply outline-none bg-gray-900 text-gray-100;
   }
   #content blockquote {
     @apply border-l-4 border-gray-800 rounded pl-4 mb-6;
