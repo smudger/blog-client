@@ -26,6 +26,12 @@ import PostMeta from '~/components/PostMeta.vue'
 export default {
   components: {
     PostMeta
+  },
+
+  metaInfo () {
+    return {
+      title: this.$page.post.title.toLowerCase()
+    }
   }
 }
 </script>
