@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import Sidebar from '../../src/components/Sidebar.vue'
+import Sidebar from '~/components/Sidebar.vue'
 
 describe('The sidebar', () => {
   let wrapper
