@@ -31,6 +31,7 @@
     "jsdom-global": "^3.0.2",
     "mocha": "^7.1.2",
     "mochapack": "^2.0.0",
+    "sinon": "^9.0.2",
     "vue-eslint-parser": "^7.1.0",
     "vue-loader": "^15.9.2",
     "vue-template-compiler": "^2.6.11",
