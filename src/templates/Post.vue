@@ -59,12 +59,12 @@ export default {
     @apply underline;
   }
   #content blockquote {
-    @apply border-l-4 rounded pl-4 my-2;
+    @apply border-l-4 border-gray-800 rounded pl-4 mb-6;
   }
   #content p {
     @apply pb-6;
   }
   #content pre {
-    @apply bg-gray-900 rounded-lg px-4 py-2 text-base bg-opacity-75 my-2;
+    @apply bg-gray-900 text-gray-100 rounded-lg px-4 py-2 text-base mb-6;
   }
 </style>
