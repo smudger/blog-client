@@ -1,4 +1,6 @@
 <template>
+  <div>
+    <progress-bar class="-ml-4 bg-gray-900 h-2 fixed top-0"/>
     <div class="xl:flex xl:justify-around text-xl">
       <aside class="mx-auto xl:mx-0 max-w-xl">
         <post-meta
@@ -15,17 +17,19 @@
         class="leading-relaxed mx-auto xl:mx-0 max-w-xl"
         v-html="$page.post.content"
       />
-    <div aria-hidden="true" class="max-w-xl xl:max-w-xs xl:w-full">
+      <div aria-hidden="true" class="max-w-xl xl:max-w-xs xl:w-full"/>
     </div>
   </div>
 </template>
 
 <script>
 import PostMeta from '~/components/PostMeta.vue'
+import ProgressBar from '~/components/ProgressBar.vue'
 
 export default {
   components: {
-    PostMeta
+    PostMeta,
+    ProgressBar
   },
 
   metaInfo () {

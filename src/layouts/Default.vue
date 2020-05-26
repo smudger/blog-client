@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col min-h-screen">
-    <header class="border-t-8 border-gray-900">
+    <header>
       <div class="max-w-2xl mx-auto">
         <g-link
           class="text-6xl font-bold focus:outline-none focus:underline hover:underline tracking-tight"
