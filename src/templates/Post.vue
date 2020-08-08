@@ -1,25 +1,27 @@
 <template>
-  <div>
-    <progress-bar class="-ml-4 bg-gray-900 h-2 fixed top-0"/>
-    <div class="xl:flex xl:justify-around text-xl">
-      <aside class="mx-auto xl:mx-0 max-w-xl">
-        <post-meta
-          class="xl:max-w-xs xl:w-full"
-          :title="$page.post.title"
-          :timeToRead="$page.post.timeToRead"
-          :author="$page.post.author"
-          :created_at="$page.post.created_at"
-          :tags="$page.post.tags"
+  <Layout>
+    <div>
+      <progress-bar class="-ml-4 bg-gray-900 h-2 fixed top-0"/>
+      <div class="xl:flex xl:justify-around text-xl">
+        <aside class="mx-auto xl:mx-0 max-w-xl">
+          <post-meta
+            class="xl:max-w-xs xl:w-full"
+            :title="$page.post.title"
+            :timeToRead="$page.post.timeToRead"
+            :author="$page.post.author"
+            :created_at="$page.post.created_at"
+            :tags="$page.post.tags"
+          />
+        </aside>
+        <article
+          id="content"
+          class="leading-relaxed mx-auto xl:mx-0 max-w-xl"
+          v-html="$page.post.content"
         />
-      </aside>
-      <article
-        id="content"
-        class="leading-relaxed mx-auto xl:mx-0 max-w-xl"
-        v-html="$page.post.content"
-      />
-      <div aria-hidden="true" class="max-w-xl xl:max-w-xs xl:w-full"/>
+        <div aria-hidden="true" class="max-w-xl xl:max-w-xs xl:w-full"/>
+      </div>
     </div>
-  </div>
+  </Layout>
 </template>
 
 <script>

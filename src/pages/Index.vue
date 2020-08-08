@@ -1,7 +1,9 @@
 <template>
-  <div class="max-w-lg mx-auto text-xl">
-    <sidebar class="mt-4" />
-  </div>
+  <Layout>
+    <div class="max-w-lg mx-auto text-xl">
+      <sidebar class="mt-4" />
+    </div>
+  </Layout>
 </template>
 
 <script>
