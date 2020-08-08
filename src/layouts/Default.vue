@@ -3,7 +3,7 @@
     <header>
       <div class="max-w-2xl mx-auto">
         <g-link
-          class="text-6xl font-bold focus:outline-none focus:underline hover:underline tracking-tight"
+          class="text-6xl focus:outline-none focus:underline hover:underline tracking-tight"
           to="/">
           <h1>{{ $static.metadata.siteName }}</h1>
         </g-link>

@@ -1,7 +1,7 @@
 <template>
-    <Layout>
-        <router-view />
-    </Layout>
+  <div id="app">
+    <router-view />
+  </div>
 </template>
 
 <static-query>

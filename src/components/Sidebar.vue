@@ -6,7 +6,7 @@
       :key="edge.node.title"
     >
       <g-link
-        class="text-center text-2xl font-bold tracking-wide lowercase mb-4 max-w-sm w-full bg-gray-900 p-8 text-gray-100 border-4 border-transparent rounded focus:border-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 hover:border-gray-900 hover:outline-none hover:bg-gray-100 hover:text-gray-900"
+        class="text-center p-2 font-semibold tracking-wide max-w-sm w-full text-gray-900 border-2 border-gray-900 rounded-md focus:outline-none focus:bg-gray-900 focus:text-gray-100 hover:outline-none hover:bg-gray-900 hover:text-gray-100"
         :to="edge.node.title | path"
       >
         {{ edge.node.title }}
