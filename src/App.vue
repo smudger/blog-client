@@ -14,13 +14,7 @@
 </static-query>
 
 <script>
-import Layout from '~/layouts/Default.vue'
-
 export default {
-  components: {
-    Layout
-  },
-
   metaInfo () {
     return {
       title: this.$static.metadata.siteName,

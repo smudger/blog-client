@@ -1,11 +1,11 @@
 import { mount } from '@vue/test-utils'
-import Sidebar from '~/components/Sidebar.vue'
+import PostList from '~/components/PostList.vue'
 
-describe('The sidebar', () => {
+describe('The post list', () => {
   let wrapper
 
   beforeEach(() => {
-    wrapper = mount(Sidebar, {
+    wrapper = mount(PostList, {
       stubs: ['g-link'],
       computed: {
         $static () {
@@ -27,11 +27,5 @@ describe('The sidebar', () => {
     expect(wrapper.html()).toEqual(expect.stringContaining('First Post'))
     expect(wrapper.html()).toEqual(expect.stringContaining('Second Post'))
     expect(wrapper.html()).toEqual(expect.stringContaining('Third Post'))
-  })
-
-  it('links to the view post page', () => {
-    expect(wrapper.findAll('g-link-stub').at(0).attributes('to')).toEqual('/posts/first-post')
-    expect(wrapper.findAll('g-link-stub').at(1).attributes('to')).toEqual('/posts/second-post')
-    expect(wrapper.findAll('g-link-stub').at(2).attributes('to')).toEqual('/posts/third-post')
   })
 })

@@ -1,17 +1,15 @@
 <template>
   <Layout>
-    <div class="max-w-lg mx-auto text-xl">
-      <sidebar class="mt-4" />
-    </div>
+    <post-list />
   </Layout>
 </template>
 
 <script>
-import Sidebar from '~/components/Sidebar.vue'
+import PostList from '~/components/PostList.vue'
 
 export default {
   components: {
-    Sidebar
+    PostList
   },
 
   metaInfo: {
