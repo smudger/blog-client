@@ -30,7 +30,7 @@ export default {
 
   computed: {
     formattedCreatedAt () {
-      return moment(this.created_at).format('MMM DD, YYYY')
+      return moment(this.post.created_at).format('MMM DD, YYYY')
     }
   }
 
