@@ -20,6 +20,10 @@ describe('The post summary', () => {
     })
   })
 
+  it('renders a link to the full post', () => {
+    expect(wrapper.find('g-link-stub').attributes('to')).toEqual('/posts/my-post')
+  })
+
   it('displays the post title', () => {
     expect(wrapper.html()).toEqual(expect.stringContaining('My Post'))
   })
