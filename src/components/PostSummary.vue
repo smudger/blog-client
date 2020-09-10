@@ -8,7 +8,7 @@
         </g-link>
         <p class="text-gray-700 text-opacity-75 mb-8 text-xl font-light tracking-tight">{{ post.excerpt }}</p>
         <div class="flex items-center text-base">
-            <g-image class="rounded-full w-12 h-12 mr-4" src="~/assets/img/smudger.png" alt="smudger" blur=2000 />
+            <g-image class="rounded-full w-12 h-12 mr-4 shadow-inner" src="~/assets/img/smudger.png" alt="smudger" blur=2000 />
             <div>
                 <p class="font-normal leading-snug">{{ post.author }}</p>
                 <p class="text-gray-700 text-opacity-75 font-light leading-snug">{{ formattedCreatedAt }} • {{ post.timeToRead }} min read</p>
