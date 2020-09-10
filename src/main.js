@@ -11,5 +11,15 @@ export default function (Vue, { router, head, isClient }) {
     href: '/favicon.svg'
   })
 
+  head.link.push({
+    rel: 'manifest',
+    href: '/manifest.json'
+  })
+
+  head.meta.push({
+    name: 'theme-color',
+    content: '#ffffff'
+  })
+
   head.bodyAttrs = { class: 'bg-gray-100 font-sans text-base text-gray-900' }
 }
