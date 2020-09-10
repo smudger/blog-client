@@ -6,5 +6,10 @@ require('~/main.css')
 export default function (Vue, { router, head, isClient }) {
   Vue.component('Layout', Layout)
 
+  head.link.push({
+    rel: 'mask-icon',
+    href: '/favicon.svg'
+  })
+
   head.bodyAttrs = { class: 'bg-gray-100 font-sans text-base text-gray-900' }
 }

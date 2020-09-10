@@ -12,9 +12,10 @@ const postcssPlugins = [tailwind(), autoprefixer()]
 if (process.env.NODE_ENV === 'production') postcssPlugins.push(purgecss(require('./purgecss.config.js')))
 
 module.exports = {
-  siteName: 'smudgeblog',
+  siteName: 'Smudgeblog',
   siteDescription: 'Yet another programming blog.',
   siteUrl: 'https://blog.smudgeserve.net',
+  icon: './static/favicon.svg',
   plugins: [
     {
       use: '@gridsome/source-filesystem',
