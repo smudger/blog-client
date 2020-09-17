@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <div>
-      <progress-bar class="-ml-4 bg-gray-900 h-2 fixed top-0"/>
+      <progress-bar class="-ml-4 sm:-ml-6 lg:-ml-8 bg-gray-900 h-2 fixed top-0"/>
       <div class="xl:flex xl:justify-around text-xl">
         <aside class="mx-auto xl:mx-0 max-w-xl">
           <post-meta
