@@ -1,6 +1,6 @@
 {
-    "name": "Smudgeblog",
-    "short_name": "Smudgeblog",
+    "name": "smudgeblog",
+    "short_name": "smudgeblog",
     "icons": [{
         "src": "favicon.png",
         "sizes": "512x512"
