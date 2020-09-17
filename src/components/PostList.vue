@@ -24,6 +24,7 @@
           author
           timeToRead
           created_at
+          category
         }
       }
     }

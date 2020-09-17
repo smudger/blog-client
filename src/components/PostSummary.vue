@@ -1,5 +1,6 @@
 <template>
     <div class="shadow-lg p-8 border-transparent rounded-lg flex flex-col bg-white">
+        <p class="text-sm leading-6 text-pink-600 font-semibold tracking-wide uppercase mb-2">{{ post.category }}</p>
         <g-link
             class="font-semibold mb-4 text-2xl focus:outline-none focus:underline hover:underline"
             :to="post.path"

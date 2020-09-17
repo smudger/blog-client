@@ -10,7 +10,7 @@
         <img class="ml-4 mt-4 w-20" src="/favicon.svg" alt="Go to homepage">
       </g-link>
     </nav>
-    <main class="p-4">
+    <main class="px-4 sm:px-6 lg:px-8">
       <slot/>
     </main>
     <footer>
