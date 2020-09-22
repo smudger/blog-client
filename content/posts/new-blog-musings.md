@@ -12,6 +12,7 @@ category: Blog
 created_at: 2020-05-23T15:00:00.000+00:00
 excerpt: For my inaugural post, it feels appropriate to talk about my experiences
   setting the blog up and I have to say the whole process couldn't have been easier.
+is_live: true
 
 ---
 For my inaugural post, it feels appropriate to talk about my experiences setting the blog up. I had been playing around with the idea of having a blog for a while, primarily to serve as a reference of interesting programming techniques that I discover along my travels through life as a developer. I was finally inspired to take action by a friend who had recently set up a company website in [Gatsby](https://www.gatsbyjs.org/ "GatsbyJs") and was discussing how enjoyable they had found the whole process.
