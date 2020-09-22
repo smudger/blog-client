@@ -3,11 +3,11 @@ label: Post
 hide_body: false
 display_field: title
 fields:
-- name: is_draft
+- name: is_live
   type: boolean
-  label: is_draft
-  description: Draft posts will not be displayed until you make then live.
-  default: true
+  label: live
+  description: Posts will not be displayed until you make them live.
+  default: false
 - type: text
   name: title
   label: title
