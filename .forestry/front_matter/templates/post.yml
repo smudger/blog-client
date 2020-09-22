@@ -3,6 +3,11 @@ label: Post
 hide_body: false
 display_field: title
 fields:
+- name: is_draft
+  type: boolean
+  label: is_draft
+  description: Draft posts will not be displayed until you make then live.
+  default: true
 - type: text
   name: title
   label: title
@@ -22,10 +27,5 @@ fields:
   type: tag_list
   default: []
   label: tags
-- name: is_draft
-  type: boolean
-  label: is_draft
-  description: Draft posts will not be displayed until you make then live.
-  default: true
 pages:
 - content/posts/new-blog-musings.md
