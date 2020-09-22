@@ -28,4 +28,5 @@ fields:
   default: []
   label: tags
 pages:
+- content/posts/implementing-validation-in-the-ddd-paradigm.md
 - content/posts/new-blog-musings.md
