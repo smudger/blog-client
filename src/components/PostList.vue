@@ -15,7 +15,7 @@
 
 <static-query>
   query {
-    allPost(sortBy: "created_at") {
+    allPost(sortBy: "created_at", filter: { is_live: { eq: true } }) {
       edges {
         node {
           title
