@@ -17,7 +17,7 @@ I've recently joined a project early in its life and we're currently in the proc
 
 I think **this article from Microsoft** provides a great introduction to the discussion. They begin by explaining that the main responsibility of an aggregate is to ensure it is always in a valid state. Furthermore, an aggregate should protect itself from being made invalid. In practice, this would mean placing checks on any method they expose which changes their state and reject any changes that would cause them to become invalid. 
 
-Let's explore this proposal a little more. Firstly, we need to settle on what we mean for an aggregate to be valid. We will soon see that the definition is up for some debate, but for now let us come up with a naive first pass. Following the principles of DDD, let us first define an aggregate to be valid if it is in a state that is possible in the real world. 
+Let's explore this proposal a little more. Firstly, we need to settle on what we mean for an aggregate to be valid. We will soon see that there is some nuance to this definition, but for now let us come up with a simple first pass. Following the principles of DDD, let us first define an aggregate to be valid if it is in a state that is possible in the real world. 
 
 For example, consider an inventory management system. This system may feature a product aggregate, containing a stock count property, which would store the number of items of that product left in stock. We would ask ourselves what values this stock count property could take. Hopefully it should be pretty apparent that the we would accept positive integers as a value. Similarly, we would accept zero to indicate that the product is out of stock. It would be nonsensical to accept negative integers, as we have no concept of having negative stock levels. Similarly, a fractional stock count would be meaningless in our domain. Therefore, we are led to the conclusion that our product aggregate is valid if its stock count is always a non-negative integer. 
 
@@ -29,7 +29,13 @@ A final point on this definition comes from the helpful DRY mnemonic. Suppose we
 
 Big DDD tick. Kinda.
 
-I mentioned that our definition of valid was up for some debate. Jeffrey Palermo and Jimmy Bogard would argue that our first definition is missing a key dimension, the context against which we are determining validity.
+I mentioned that our definition of valid was slightly nuanced. In fact, Jeffrey Palermo and Jimmy Bogard would argue that our first definition is missing a key dimension, the context against which we are determining validity.
+
+In order to take out a new loan, a customer must have a valid credit check. In order to update a post on a blog, the user must have write permissions for that post. In order to pay an invoice, there already be a purchase order for the same amount. Domains are full of business rules about whether or not certain operations can be performed. Notice the additional phrase we add to these business rules. There is a difference between saying that a customer is valid if they have a valid credit check and saying a customer must have a valid credit check _in order to take out a loan_. We are not simply asking if a customer is valid, we are asking whether a customer can perform a certain operation. In the banking domain, you can still be a customer even if you don't have a valid credit check, you're just more restricted in the operations you can perform. This is the issue Jeffrey and Jimmy are raising with our initial definition. Jimmy writes
+
+> Instead of answering the question, “Is this object valid?”, try and answer the question, “Can this operation be performed?**”**.
+
+Let's explore this viewpoint a little more. Firstly, notice that many of these rules also involves conditions that must between across many different aggregates. These rules would not be very easy to fit into our current definition.
 
 Consider an airline ticket booking system. We've designed our passenger aggregate, storing their passport number, their email address, and perhaps a few other properties. We've validated everything inside the aggregate and we're happily chugging along selling tickets to passengers, spamming them with booking confirmations and marketing content via email, blah blah blah. 
 
@@ -37,15 +43,7 @@ Until one day a new requirement comes along. The airline love our system so much
 
 Joanne's trying to book a ticket from Berlin to Cape Town to visit relatives. But that's a catch. She's a bit of a technophobe and she doesn't have an email address. What do we do now? Refuse to let her fly with our airline because unless she creates an airline ticket? Probably not a great business decision. Create a new aggregate for passengers without email addresses, a TechnophobicPassenger? Then, even current passengers would start being divided along contours which do not exist in the real world domain. Not very DDD-y.
 
-This is the problem Jeffrey and Jimmy are raising with our initial definition. We've placed a restriction on our passenger aggregate, which is only actually a restriction required by one use case, our email spamming module. They argue it's better to group the restrictions with the operation that requires them. Furthermore, even our initial statement regarding confirming validity of aggregates is somewhat flawed. Jimmy writes
-
-> Instead of answering the question, “Is this object valid?”, try and answer the question, “Can this operation be performed?**”**.
-
 This sounds very appealing to our ticket booking system. Now, our legacy passengers and all the Joannes of the world can still be classified as passengers using the same aggregate, just like they are in the real world domain. Rather than the passenger aggregate, it is now the responsibility of the email spamming module to confirm that a passenger has an email address. If a passenger doesn't have an email address, it is now up to the email spamming module to handle the passenger in the way it sees fit. It's probably no big deal, perhaps we try sending them our marketing detritus via post instead? Retro.
-
-This approach does have some other nice advantages. In our previous definition, we neglected to mention some other validations that we might want to perform. We need to consider rules between aggregates.
-
-In order to Each domestic flight must have a destination and an arrival airport in the same country. Domains are full of business rules that span aggregates. **These kind of validations would be pretty gross to implement inside an aggregate as we would have to pass it a reference to another aggregate, which is something we should attempt to avoid wherever possible (link to why?). However, implementing these validations in a service, next to the logic that requires them to be satisfied, is much nicer. Not only do can we have easy access to all the aggregates we require, but we've also nicely encapsulated the logic and the validation for that logic in one place. Nice.**
 
 Well, apart from all our old issues come back. Everyone using the product aggregate now has to handle negative stock counts again. Greg Young offers the answer. They conclude that there is truth to both approaches. In fact, there are two distinct concepts we should be interested in validating.
 
