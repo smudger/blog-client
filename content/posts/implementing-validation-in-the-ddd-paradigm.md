@@ -29,50 +29,53 @@ A final point on this definition comes from the helpful DRY mnemonic. Suppose we
 
 Big DDD tick. Kinda.
 
-I mentioned that our definition of valid was up for some debate. Jeffrey Palermo argues that our first definition is missing a key dimension, the context against which we are determining validity.
+I mentioned that our definition of valid was up for some debate. Jeffrey Palermo and Jimmy Bogard would argue that our first definition is missing a key dimension, the context against which we are determining validity.
 
-Talk though these 4 articles as the intro.
+Consider an airline ticket booking system. We've designed our passenger aggregate, storing their passport number, their email address, and perhaps a few other properties. We've validated everything inside the aggregate and we're happily chugging along selling tickets to passengers, spamming them with booking confirmations and marketing content via email, blah blah blah. 
 
-[Microsoft - Design validations in the domain model layer](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-model-layer-validations "Microsoft") (Aggregate Invariants)
+Until one day a new requirement comes along. The airline love our system so much they want to migrate their old legacy booking system over to our shiny, new one. This involves migrating all the passenger data over, but there's a catch. In the old system, it wasn't mandatory to store an email address against a passenger, but in our system it is. In fact, not only is an email address mandatory in our system, but we have functionality making use of that fact. So what can we do? Certainly, we don't want to remove the email spamming module. That's why everyone loves our app so much. As a workaround, perhaps we import the old passengers as a different aggregate, something like a LegacyPassenger. It's not a great solution; to any domain expert, a passenger is a passenger no matter which system they originated from, so we've had to make our model diverge from the domain, but whatever it works for now right? Erm, no.
 
-[https://jeffreypalermo.com/2009/05/the-fallacy-of-the-always-valid-entity/](https://jeffreypalermo.com/2009/05/the-fallacy-of-the-always-valid-entity/ "https://jeffreypalermo.com/2009/05/the-fallacy-of-the-always-valid-entity/") (Business Rules)
+Joanne's trying to book a ticket from Berlin to Cape Town to visit relatives. But that's a catch. She's a bit of a technophobe and she doesn't have an email address. What do we do now? Refuse to let her fly with our airline because unless she creates an airline ticket? Probably not a great business decision. Create a new aggregate for passengers without email addresses, a TechnophobicPassenger? Then, even current passengers would start being divided along contours which do not exist in the real world domain. Not very DDD-y.
 
-[Los Techies - Validation in a DDD world](https://lostechies.com/jimmybogard/2009/02/15/validation-in-a-ddd-world/ "Los Techies") (Business Rules)
+This is the problem Jeffrey and Jimmy are raising with our initial definition. We've placed a restriction on our passenger aggregate, which is only actually a restriction required by one use case, our email spamming module. They argue it's better to group the restrictions with the operation that requires them. Furthermore, even our initial statement regarding confirming validity of aggregates is somewhat flawed. Jimmy writes
 
-[Greg Young - Always valid](http://codebetter.com/gregyoung/2009/05/22/always-valid/ "Greg Young") (Business Rules + Aggregate Invariants)
+> Instead of answering the question, “Is this object valid?”, try and answer the question, “Can this operation be performed?**”**.
 
-This led us to the conclusion that there are two separate concepts we should be interested in validating:
+This sounds very appealing to our ticket booking system. Now, our legacy passengers and all the Joannes of the world can still be classified as passengers using the same aggregate, just like they are in the real world domain. Rather than the passenger aggregate, it is now the responsibility of the email spamming module to confirm that a passenger has an email address. If a passenger doesn't have an email address, it is now up to the email spamming module to handle the passenger in the way it sees fit. It's probably no big deal, perhaps we try sending them our marketing detritus via post instead? Retro.
+
+This approach does have some other nice advantages. In our previous definition, we neglected to mention some other validations that we might want to perform. We need to consider rules between aggregates.
+
+In order to Each domestic flight must have a destination and an arrival airport in the same country. Domains are full of business rules that span aggregates. **These kind of validations would be pretty gross to implement inside an aggregate as we would have to pass it a reference to another aggregate, which is something we should attempt to avoid wherever possible (link to why?). However, implementing these validations in a service, next to the logic that requires them to be satisfied, is much nicer. Not only do can we have easy access to all the aggregates we require, but we've also nicely encapsulated the logic and the validation for that logic in one place. Nice.**
+
+Well, apart from all our old issues come back. Everyone using the product aggregate now has to handle negative stock counts again. Greg Young offers the answer. They conclude that there is truth to both approaches. In fact, there are two distinct concepts we should be interested in validating.
 
 1. Aggregate invariants
 2. Business rules
 
-Let's consider aggregate invariants first. These are the defining characteristics of an aggregate. If even one of these conditions is not satisfied by an object, that we cannot consider it to be an instance of the aggregate. Conversely, as long as an object meets all of the conditions, it is an instance of the aggregate by definition. I think my favourite example to illuminate this comes from **Greg Young**'s article.
+Let's consider aggregate invariants first. This the concept we discusses first. Aggregate invariants are the definition of an aggregate. They are a list of defining characteristics that allow us to identify whether an object is an instance of our aggregate. Even if an object satisfies all but one aggregate invariants, it cannot be considered an instance of the aggregate.
 
-Consider a cyclops with two eyes. Is it still a cyclops? I think most people would agree that no it is not. Therefore, having one eye is an invariant of the cyclops aggregate. It must be true for something to even have a chance at being a cyclops. Are there other invariants that must also be satisfied? Almost certainly! We would not call a cat with one eye a cyclops. We would probably only consider something to be a cyclops if it was also humanoid. Aha! Another invariant. We could repeat this process to eventual build up our exhaustive definition of what it means to be a cyclops. Notice, that there will also be many features of a cyclops that are not invariants. For example, what about the cyclop's hair colour, or its favourite food? Neither of these are invariants. A cyclops can have any hair colour (or even no hair) and still be considered a cyclops. This reflects the exhaustive nature of our list of invariants. These are the only deciders of whether something is a cyclops. If you satisfy them all, then you are cyclops no matter what other properties you possess. If there is even one you do not satisfy, then you are not.
+Consider a cyclops with two eyes. Is it still a cyclops? I think most people would agree that no it is not. Therefore, having one eye is an invariant of the cyclops aggregate. It must be true for something to even have a chance of being a cyclops. Are there other invariants that must also be satisfied? Almost certainly! We would not call a cat with one eye a cyclops. We would probably only consider something to be a cyclops if it was also humanoid. Aha! Another invariant. We could repeat this process to eventual build up our exhaustive definition of what it means to be a cyclops. Notice, that there will also be many features of a cyclops that are not invariants. For example, what about the cyclop's hair colour, or its favourite food? Neither of these are invariants. A cyclops can have any hair colour (or even no hair) and still be considered a cyclops. This reflects the exhaustive nature of our list of invariants. These are the only deciders of whether something is a cyclops. If you satisfy them all, then you are cyclops no matter what other properties you possess. If there is even one you do not satisfy, then you are not.
 
-These aggregate invariants are incredibly powerful. By fixing the definition of the aggregate, any consumers making use of the aggregate can safely make assumptions about its structure and what properties it contains. This also protects us against having to write code to handle situations that would impossible in the real world.
+Notice that we often implicitly apply invariants to our aggregates without thinking about it. A product's stock count has an integer type. It can never be a string. This invariant is enforced for us by our programming language when we assign the property a type. Thus, aggregate invariants are simply these and the additional constraints we apply on top that we, rather than the language, are responsibly for enforcing.
 
-**<Example of nonsensical test/method "if a cyclops has two eyes then ...">**
+Aggregate invariants are incredibly powerful and well worth the effort of enforcing at all times. By fixing the definition of the aggregate, any consumers making use of the aggregate can safely make assumptions about its structure and what properties it contains. They also protects us against having to write code to handle situations that would impossible in the real world and allow us to keep our code concise. Notice that as they provide the definition of an aggregate, these invariants can never span multiple aggregates. For this type of constraint, we must look to our second concept.
 
-**<Talk about how this test would have to be repeated>**
+Business rules are the rules in force in the business domain you are working in. Crucially, they are not interested in enforcing the validity of an aggregate, instead they enforcing whether an action in your domain can take place. These may or may not be constraints involving a single aggregate or a combination of multiple. We strive to place the validation for these constraints next to the logic for performing the operation to which they relate, whether that is inside a method on an aggregate or inside a domain service. 
 
-**<This gives us the restriction that we must ensure that the invariants are always satisfied, protect the constructor and the update methods>**
+Consider our ticket booking system. To book a child's ticket on our airline, the passenger must be less than 12 years old. Must all passengers be less than 12 years old? Of course not! This is a business rule that must be satisfied only in order to perform the operation of buying a child's ticket. 
 
-**Domain rules** - Within an aggregate or spanning multiple aggregates. These are rules defined by the business domain you are working in. They enforce whether certain changes / actions / commands can take place within your domain - “Can this operation be performed?” These may or may not be constraints on an individual object or a combination of multiple objects. These constraints must be checked before performing the operation to which they relate. This happens wherever the operation itself happens, whether that is inside a method on a model or inside a domain service.  
-e.g. Selling bus tickets to a passenger. The passenger must be over 12 years old. Before selling the bus ticket we check that the passenger is above 12 years old and reject if they are not. This domain rule only affects one model but it is not a model invariant because it is valid for a passenger to not be above 12 years old in general (lots of passengers will be), but it is only invalid to sell tickets to them - it is only invalid in the context of this operation. Similarly, you could imagine not selling a season ticket to any passengers that do not have an address, we would not make having an address a model invariant because you can be a passenger and not have an address, it is only invalid in the context of selling you season tickets. You can easily apply this to constraints across multiple models / aggregates.
-
-**<Compare and contrast the two concepts>**
+Let's compare these two concepts.
 
 * Aggregate Invariant
-  * Is it a ...?
-  * Within an aggregate
-  * Always true
-  * Check on every mutation to the aggregate
-* Business rules
-  * Can this operation be performed?
-  * Within or between multiple aggregates
-  * Only need to be true in the context of one operation, not all aggregates will be in this state all the time
-  * Check when you are about to perform the operation
+  * "Is it a valid instance of the aggregate?".
+  * All invariants apply within the context of one aggregate only.
+  * These invariants must always be satisfied.
+  * We should validate these invariants on every mutation to the aggregate.
+* Business Rule
+  * "Can this operation be performed?"
+  * Rules can apply within a single aggregate or between multiple aggregates.
+  * Only need to be satisifed to perform the associated operation, not all aggregates will be in this state all the time.
+  * We should validate these rules just before we perform the associated operation.
 
 **<Implementing aggregate invariants>**
 
@@ -81,6 +84,16 @@ e.g. Selling bus tickets to a passenger. The passenger must be over 12 years old
 **<Implementing business rules>**
 
 * Discuss specifications
+
+* Talk though these 4 articles as the intro.
+
+  [Microsoft - Design validations in the domain model layer](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-model-layer-validations "Microsoft") (Aggregate Invariants)
+
+  [https://jeffreypalermo.com/2009/05/the-fallacy-of-the-always-valid-entity/](https://jeffreypalermo.com/2009/05/the-fallacy-of-the-always-valid-entity/ "https://jeffreypalermo.com/2009/05/the-fallacy-of-the-always-valid-entity/") (Business Rules)
+
+  [Los Techies - Validation in a DDD world](https://lostechies.com/jimmybogard/2009/02/15/validation-in-a-ddd-world/ "Los Techies") (Business Rules)
+
+  [Greg Young - Always valid](http://codebetter.com/gregyoung/2009/05/22/always-valid/ "Greg Young") (Business Rules + Aggregate Invariants)
 
 [Martin Fowler - Replacing Throwing Exceptions with Notification in Validations](https://martinfowler.com/articles/replaceThrowWithNotification.html "Martin Fowler")
 
