@@ -15,7 +15,7 @@ excerpt: ''
 ---
 I've recently joined a project early in its life and we're currently in the process of deciding our design approach for various components of the system. It's a very exciting project for me as we're trying to follow the principles of domain-driven design (DDD) as much as possible. Whilst I've read both the **blue book** and the **red book**, I must admit this is the first time I've worked on a project that is attempting to follow DDD, so this is largely a new landscape to me. Therefore, I figured it might be useful to write something about the various challenges we face along the way in the hope that it will offer some insight into the considerations we have been making as we grow the system out. With that in mind, let's roll our sleeves up and get started on the first topic... validation!
 
-I think this article from Microsoft provides a great introduction to the discussion. They begin by explaining that the main responsibility of an aggregate is to ensure it is always in a valid state. Furthermore, they should protect themselves from being made invalid. In practice, this would mean placing checks on any method they expose which changes their state and reject any changes that would cause them to become invalid. 
+I think **this article from Microsoft** provides a great introduction to the discussion. They begin by explaining that the main responsibility of an aggregate is to ensure it is always in a valid state. Furthermore, they should protect themselves from being made invalid. In practice, this would mean placing checks on any method they expose which changes their state and reject any changes that would cause them to become invalid. 
 
 We will soon see that the definition of what it means to be in a valid state is up for some debate, but for now let us come up with a naive first definition. Following the principles of DDD, let us first define an aggregate to be valid if it is in a state that is possible in the real world. 
 
@@ -29,7 +29,7 @@ A final point on this definition comes from the helpful DRY mnemonic. Suppose we
 
 Big DDD tick. Kinda.
 
-I mentioned
+I mentioned that 
 
 Talk though these 4 articles as the intro.
 
