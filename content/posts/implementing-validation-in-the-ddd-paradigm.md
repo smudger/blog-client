@@ -25,7 +25,11 @@ The benefits to ensuring an aggregate is always valid should be clear. By enforc
 
 Furthermore, the article makes an interesting point about how we would test drive this order service in the case that our product aggregate is not always valid. In this case, our flawed product aggregate should be glaringly obvious. We would have to write tests of the form "given the stock count is negative, when we order the product, then ..." or "given the stock count is a fraction, when we order the product, then ...". How would we finish the test statements? Your guess is as good as mine.
 
-A final point on this definition comes from the helpful DRY mnemonic. Suppose we do have our not-always-valid product aggregate, but we have made the sensible decision that each caller of the aggregate should throw an InvalidStockCountException whenever the product has an invalid stock count. Well, as sensible as the handling code is, we have to repeat it across every caller of the product aggregate. In addition, we are increasingly the likelihood of introducing bugs by forgetting to add the handling code as we would have to add it whenever we make use of the product's stock count. A much better approach would be to just perform the handling in one place, on whichever method the product exposes to update its stock count, and then allow the callers to use the aggregate, safe in the knowledge that they only need to handle cases with real world meaning.
+A final point on this definition comes from the helpful DRY mnemonic. Suppose we have our not-always-valid product aggregate, but we have made the sensible decision that each caller of the aggregate should throw an InvalidStockCountException whenever the product has an invalid stock count. Well, as sensible as the handling code is, we have to repeat it across every caller of the product aggregate. In addition, we are increasingly the likelihood of introducing bugs into our system by forgetting to add the handling code on each caller. A cleaner approach would be to just perform the handling inside the product aggregate, perhaps in the constructor and on whichever method the product exposes to update its stock count, if it exists. Now, the callers are free to use the aggregate, safe in the knowledge that they only need to handle cases with real world meaning. 
+
+Big DDD tick. Kinda.
+
+I mentioned
 
 Talk though these 4 articles as the intro.
 
