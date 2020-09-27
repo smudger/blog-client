@@ -41,7 +41,7 @@ I mentioned that our definition of valid was slightly nuanced. In fact, Jeffrey 
 
 In order to take out a new loan, a customer must have a valid credit check. In order to update a post on a blog, the user must have write permissions for that post. In order to pay an invoice, there already be a purchase order for the same amount. Domains are full of business rules about whether or not certain operations can be performed. Notice the additional phrase we add to these business rules. There is a difference between the statement that a customer is valid if they have a valid credit check and the statement that a customer must have a valid credit check _in order to take out a loan_. We are no longer concerned with the validity of an aggregate, rather we are interested in whether that aggregate can perform a certain operation. In the banking domain, you can still be a customer even if you don't have a valid credit check, you're just more restricted in the operations you can perform. This is the issue Jeffrey and Jimmy are raising with our initial definition. Jimmy writes the following.
 
-> Instead of answering the question, “Is this object valid?”, try and answer the question, “Can this operation be performed?**”**.
+> Instead of answering the question, “Is this object valid?”, try and answer the question, “Can this operation be performed?”.
 
 Furthermore, they argue that the validation to answer this type of question belongs next to the operation they are validating, whether that occurs as a method on the aggregate or in an external service. Let's explore this viewpoint a little more. 
 
