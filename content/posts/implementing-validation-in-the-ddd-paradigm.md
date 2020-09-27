@@ -23,7 +23,7 @@ For example, consider an inventory management system. This system may feature a 
 
 Next, let's consider the statement that an aggregate should ensure that it is always in a valid state. The reasoning why this should be the case should now be a little clearer. By enforcing that an aggregate is always valid, we protect callers of the aggregate against writing code to check for and handle cases that would not be possible in the real world. For example, consider the process of creating an order for some of our products and suppose our product aggregate does not ensure it is always in a valid state. Our domain expert has told us, quite rightly, that we should allow a customer to order a product if we have the product left in stock and reject the order if the stock count is zero. Without ensuring the product is valid, there are a couple of extra cases to consider here. What should we do if the stock count is negative? What should we do if the stock count is a fraction? If you posed  these questions to the domain expert, you would probably get little more answer than a baffled expression. These states are not possible in the real world. Therefore, given that our model should be an reflection of the real world domain, they should not be possible in our model either and we certainly should not being writing code to handle these states.
 
-Furthermore, the article makes an interesting point about how we would test drive the logic for creating an order in the case that our product aggregate is not always valid. In this case, the issues with a product not being valid should be glaringly obvious. How would we finish the statement of these test cases? Your guess is as good as mine. Furthermore, we would have to repeat this test cases across every piece of functionality making use of the stock count property on the product aggregate. Feels quite repetitive eh?
+Furthermore, the article makes an interesting point about how we would test drive the logic for creating an order in the case that our product aggregate is not always valid. In this case, the issues with a product not being valid should be glaringly obvious. 
 
     void when_a_customer_orders_a_product_with_negative_stock_then_...() {
     	// TODO
@@ -32,6 +32,8 @@ Furthermore, the article makes an interesting point about how we would test driv
     void when_a_customer_orders_a_product_with_fractional_stock_then_...() {
     	// TODO
     }
+
+How would we finish the statement of these test cases? Your guess is as good as mine. Furthermore, we would have to repeat this test cases across every piece of functionality making use of the stock count property on the product aggregate. Feels quite repetitive eh?
 
 Therefore, this idea of the always-valid aggregate seems like a good one. We've reduced repetition in both our production code and our test cases, and we're less likely to introduce bugs as a result of forgetting to check for these nonsensical cases. Callers of our aggregate are free to use the aggregate, safe in the knowledge that they only need to handle cases with real world meaning.
 
