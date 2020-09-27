@@ -35,7 +35,7 @@ Furthermore, the article makes an interesting point about how we would test driv
 
 How would we finish the statement of these test cases? Your guess is as good as mine. Furthermore, we would have to repeat this test cases across every piece of functionality making use of the stock count property on the product aggregate. Feels quite repetitive eh?
 
-Therefore, this idea of the always-valid aggregate seems like a good one. We've reduced repetition in both our production code and our test cases, and we're less likely to introduce bugs as a result of forgetting to check for these nonsensical cases. Callers of our aggregate are free to use the aggregate, safe in the knowledge that they only need to handle cases with real world meaning.
+This idea of the always-valid aggregate seems like a good one. We've reduced repetition in both our production code and our test cases, and we're less likely to introduce bugs as a result of forgetting to check for these nonsensical cases. Callers of our aggregate are free to use the aggregate, safe in the knowledge that they only need to handle cases with real world meaning.
 
 Big DDD tick. Kinda.
 
